@@ -13,7 +13,7 @@ from res.build_layout import build
 
 # Build main window
 
-window = Gtk.Window()
+window = Gtk.Window(title="Bbrowser")
 window.set_default_size(800, 600)
 window.connect("destroy", Gtk.main_quit)
 
