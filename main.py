@@ -6,15 +6,18 @@
 #########################
 
 # imports
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 from res.build_layout import build
-from tkinter import *
 
-# Build Window
-window = Tk()  # Initialize window
-window.title("Bbrowser")
-window.geometry("600x600")
+# Build main window
 
-# Build layout
+window = Gtk.Window()
+window.set_default_size(800, 600)
+window.connect("destroy", Gtk.main_quit)
+
 build(window)
 
-window.mainloop()  # Maintain window open
+window.show_all()
+Gtk.main()

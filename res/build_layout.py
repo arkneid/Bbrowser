@@ -5,23 +5,26 @@
 #########################
 
 # imports
-from tkinter import *
+from gi.repository import Gtk
+
+
+def search(widget):
+    print("cenas")
 
 
 def build(window):
-    # Button Config
-    back_btn = Button(window, text="Back")
-    forward_btn = Button(window, text="Forward")
+    grid = Gtk.Grid()
+    window.add(grid)
 
-    back_btn.grid(row=0, column=0, sticky="nsew")
-    forward_btn.grid(row=0, column=1, sticky="nsew")
+    # Create buttons
+    back_btn = Gtk.Button(label="Back")
+    forward_btn = Gtk.Button(label="Forward")
 
-    # Text Box
-    url_box = Entry(window)
-    url_box.grid(row=0, column=3, sticky="nsew")
-    Grid.columnconfigure(window, index=3, weight=1)
+    # Create Url Bar
+    url_bar = Gtk.Entry()
+    url_bar.connect("activate", search)
 
-    # Sub window with scroll
-    scroll = Canvas(window, bg="black")
-    scroll.grid(row=1, columnspan=4, sticky="nsew")
-    Grid.rowconfigure(window, index=1, weight=1)
+    # Organize Grid
+    grid.add(back_btn)
+    grid.add(forward_btn)
+    grid.add(url_bar)
